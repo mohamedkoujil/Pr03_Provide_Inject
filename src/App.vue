@@ -1,0 +1,85 @@
+<script setup>
+import titleComponent from './components/titleComponent.vue'
+import menuItem from './components/menuItem.vue'
+import { roundTwo } from './helpers/roundTwo.js'
+import { watch } from 'vue'
+import { ref } from 'vue'
+import { provide } from 'vue'
+
+let info = ref({
+  currency: 'Dollars',
+  menu: [
+    { name: 'Hamburger 🍔', price: 5 },
+    { name: 'Cheeseburger 🧀', price: 6 },
+    { name: 'Impossible Burger 🥕', price: 7 },
+    { name: 'Fries 🍟', price: 2 }
+  ]
+})
+const updateInfo = (key, value) => {
+  info.value[key] = value
+}
+//if currency is changed, the menu will be updated
+const updateMenu = (currency) => {
+  if (currency === 'Dollars') {
+    info.value.menu.forEach((item) => {
+      item.price = roundTwo(item.price * 1.08)
+    })
+  } else {
+    info.value.menu.forEach((item) => {
+      item.price = roundTwo(item.price / 1.08)
+    })
+  }
+}
+
+watch(
+  () => info.value.currency,
+  (currency) => {
+    updateMenu(currency)
+  }
+)
+
+let command = ref({
+  title: '',
+  cart: []
+})
+const addToCart = (item) => {
+  command.value.cart.push(item)
+  console.log('Cart:', item)
+  console.log('cart:', command.value.cart)
+}
+const placeOrder = () => {
+  alert('Order placed: ' + command.value.cart)
+}
+
+provide('info', { info, updateInfo })
+provide('command', { command, addToCart, placeOrder })
+</script>
+
+<template>
+  <h3>Menu</h3>
+  <div>
+    <titleComponent />
+    <form>
+      <select name="currency" v-model="info.currency">
+        <option value="Dollars">Dollars($)</option>
+        <option value="Euros">Euros(€)</option>
+      </select>
+    </form>
+    <h3>Menu</h3>
+    <menuItem
+      v-for="item in info.menu"
+      :name="item.name"
+      :price="item.price"
+      :currency="info.currency"
+      v-bind:key="item.name"
+    />
+  </div>
+</template>
+
+<style scoped>
+h3 {
+  display: flex;
+  justify-content: center;
+  margin: 0.5em;
+}
+</style>
