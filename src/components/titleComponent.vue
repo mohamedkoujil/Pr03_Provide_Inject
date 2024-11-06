@@ -44,4 +44,10 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+button:hover {
+  background-color: #5e5ce6;
+}
+button:active {
+  background-color: #4f4dc1;
+}
 </style>

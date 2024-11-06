@@ -56,7 +56,6 @@ provide('command', { command, addToCart, placeOrder })
 </script>
 
 <template>
-  <h3>Menu</h3>
   <div>
     <titleComponent />
     <form>
@@ -81,5 +80,17 @@ h3 {
   display: flex;
   justify-content: center;
   margin: 0.5em;
+  color: #6866f0;
+}
+form {
+  display: flex;
+  justify-content: center;
+  margin: 0.5em;
+}
+select {
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 0.5em;
+  border: 1px solid #6866f0;
 }
 </style>

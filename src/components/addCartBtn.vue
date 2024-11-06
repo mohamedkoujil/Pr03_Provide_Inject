@@ -17,4 +17,10 @@ button {
   border: none;
   border-radius: 5px;
 }
+button:hover {
+  background-color: #5e5ce6;
+}
+button:active {
+  background-color: #4f4dc1;
+}
 </style>

@@ -9,8 +9,8 @@ const currencySymbol = computed(() => {
 </script>
 
 <template>
-  <div class="flex">
-    <div>
+  <div class="container">
+    <div class="flex-column margin-right">
       <span>{{ name }} </span>
       <span>{{ price }}{{ currencySymbol }}</span>
     </div>
@@ -19,12 +19,20 @@ const currencySymbol = computed(() => {
 </template>
 
 <style scoped>
-.flex {
+.container {
   display: flex;
   justify-content: space-between;
   border: 1px solid rgb(202, 202, 202);
   padding: 10px;
-  margin: 10px;
+  margin-bottom: 10px;
   border-radius: 5px;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin-right {
+  margin-right: 20px;
 }
 </style>
