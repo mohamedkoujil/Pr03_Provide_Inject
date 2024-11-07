@@ -1,11 +1,12 @@
 <script setup>
-import titleComponent from './components/titleComponent.vue'
-import menuItem from './components/menuItem.vue'
+import titleComponent from './components/TitleComponent.vue'
+import menuItem from './components/MenuItem.vue'
 import { roundTwo } from './helpers/roundTwo.js'
 import { watch } from 'vue'
 import { ref } from 'vue'
 import { provide } from 'vue'
 
+// Variable per guardar la informació del menú, la moneda i els preus
 let info = ref({
   currency: 'Dollars',
   menu: [
@@ -15,10 +16,12 @@ let info = ref({
     { name: 'Fries 🍟', price: 2 }
   ]
 })
+
+// Funció per actualitzar la info, com ara la moneda o els plats
 const updateInfo = (key, value) => {
   info.value[key] = value
 }
-//if currency is changed, the menu will be updated
+// Funció per actualitzar els preus del menú quan canviem de moneda
 const updateMenu = (currency) => {
   if (currency === 'Dollars') {
     info.value.menu.forEach((item) => {
@@ -30,25 +33,27 @@ const updateMenu = (currency) => {
     })
   }
 }
-
+// Watcher per actualitzar la vista quan canviem de moneda
 watch(
   () => info.value.currency,
   (currency) => {
     updateMenu(currency)
   }
 )
-
+// Variable per guardar la comanda del client
 let command = ref({
   title: '',
   cart: []
 })
+// Funció per afegir un plat al carret de la comanda del client
 const addToCart = (item) => {
   command.value.cart.push(item)
-  console.log('Cart:', item)
-  console.log('cart:', command.value.cart)
+  //console.log('Cart:', item)
+  //console.log('cart:', command.value.cart)
 }
+// Funció per finalitzar la comanda
 const placeOrder = () => {
-  alert('Order placed: ' + command.value.cart)
+  alert('Order placed: ' + command.value.title + '=>' + command.value.cart)
 }
 
 provide('info', { info, updateInfo })

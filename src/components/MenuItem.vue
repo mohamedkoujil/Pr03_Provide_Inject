@@ -1,8 +1,9 @@
 <script setup>
-import addCartBtn from './addCartBtn.vue'
-import { defineProps, computed } from 'vue'
+import addCartBtn from './AddCartBtn.vue'
+import { computed } from 'vue'
 const { name, price, currency } = defineProps(['name', 'price', 'currency'])
 
+// Funció per retornar el símbol de la moneda i actualitzar-lo quan canviem de moneda
 const currencySymbol = computed(() => {
   return currency === 'Dollars' ? '$' : '€'
 })

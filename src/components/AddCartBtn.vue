@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, inject } from 'vue'
+import { inject } from 'vue'
 const { name } = defineProps(['name'])
 const { addToCart } = inject('command')
 </script>

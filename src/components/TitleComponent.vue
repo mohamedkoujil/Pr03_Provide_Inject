@@ -4,6 +4,7 @@ import { computed } from 'vue'
 
 const { command, placeOrder } = inject('command')
 
+// Variable per guardar el títol de la comanda, per defecte 'No title'
 const title = computed(() => command.value.title || 'No title')
 </script>
 

@@ -1,4 +1,4 @@
-<!-- Component que mostraria la comanda una vegada feta, com l'alerta -->
+<!-- TODO, Component que mostraria la comanda una vegada feta, com l'alerta -->
 <script setup></script>
 
 <template>
