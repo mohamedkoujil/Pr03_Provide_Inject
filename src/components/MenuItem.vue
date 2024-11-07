@@ -1,5 +1,5 @@
 <script setup>
-import addCartBtn from './AddCartBtn.vue'
+import AddCartBtn from './AddCartBtn.vue'
 import { computed } from 'vue'
 const { name, price, currency } = defineProps(['name', 'price', 'currency'])
 
@@ -15,7 +15,7 @@ const currencySymbol = computed(() => {
       <span>{{ name }} </span>
       <span>{{ price }}{{ currencySymbol }}</span>
     </div>
-    <addCartBtn :name="name" />
+    <AddCartBtn :name="name" />
   </div>
 </template>
 

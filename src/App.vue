@@ -1,6 +1,6 @@
 <script setup>
-import titleComponent from './components/TitleComponent.vue'
-import menuItem from './components/MenuItem.vue'
+import TitleComponent from './components/TitleComponent.vue'
+import MenuItem from './components/MenuItem.vue'
 import { roundTwo } from './helpers/roundTwo.js'
 import { watch } from 'vue'
 import { ref } from 'vue'
@@ -56,13 +56,12 @@ const placeOrder = () => {
   alert('Order placed: ' + command.value.title + '=>' + command.value.cart)
 }
 
-provide('info', { info, updateInfo })
 provide('command', { command, addToCart, placeOrder })
 </script>
 
 <template>
   <div>
-    <titleComponent />
+    <TitleComponent />
     <form>
       <select name="currency" v-model="info.currency">
         <option value="Dollars">Dollars($)</option>
@@ -70,7 +69,7 @@ provide('command', { command, addToCart, placeOrder })
       </select>
     </form>
     <h3>Menu</h3>
-    <menuItem
+    <MenuItem
       v-for="item in info.menu"
       :name="item.name"
       :price="item.price"
